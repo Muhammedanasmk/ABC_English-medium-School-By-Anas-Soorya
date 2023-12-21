@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABC English Medium School</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #fcfcfce7;
+      color: #fff;
+      padding: 5px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #cfcccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333333;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+
+    main {
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer {
+      background-color: #333333e7;
+      color: #fff;
+      padding: 5px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    img:hover, video:hover {
+      transform: scale(1.1);
+      transition: transform 0.3s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>
+    <img style="width: 20%;" src="abcd-school-high-resolution-logo-transparent.png">
+  </h1>
+</header>
+
+<nav>
+  <a href="#home" onclick="showInterface('home')">Home</a>
+  <a href="#about" onclick="showInterface('about')">About</a>
+  <a href="https://muhammedanasmk.github.io/responsive-registration-form-website-by-anas-and-soorya/index" target="_blank">Register</a>
+  <a href="#contact" onclick="showInterface('contact')">Contact Us</a>
+  <a href="#principal&teachers" onclick="showInterface('principal')">Principal & teachers</a>
+</nav>
+
+<main>
+  <section id="home-interface">
+    <h2>Welcome to our Web!</h2>
+    <p>Hello, a warm welcome to ABC English Medium School Web. We will share our latest programs and other occasions held in our School through this website.</p>
+    <h2>Recent Occasion</h2>
+    <p>On December 15th, our school transforms into a jubilant haven as we celebrate Annual Day. Bursting with vibrant performances, the stage becomes a showcase for our students' talents. The air is filled with laughter and pride, uniting our school community in a shared celebration of creativity and achievement. You can register through the "Register" option above.</p>
+    <h2>Our works</h2>
+    <p>
+      <img style="width: 325px;" src="maxresdefault.jpeg">
+      <img style="width: 325px;" src="maxresdefault (1).jpeg">
+      <img style="width: 325px;" src="maxresdefault (2).jpeg">
+    </p>
+    <h2>Annual Day 2022</h2>
+    <p>
+      <video src="Welcome - animation.mp4" width="500" loop autoplay controls=""></video>
+    </p>
+  </section>
+
+  <section id="contact-interface" style="display: none;">
+    <h2>Contact Us</h2>
+    <p>For any inquiries or assistance, please feel free to reach out to us:</p>
+    <p>Email: abc_school@thamarassery.com</p>
+    <p>Phone: +1 (123) 456-7890</p>
+  </section>
+
+  <section id="about-interface" style="display: none;">
+    <h2>About Us</h2>
+    <p>ABC School, established in 1992, stands as a beacon of educational excellence, nurturing young minds for three decades. With a rich history and commitment to fostering holistic development, ABC School has been a cornerstone in shaping future leaders. Our dedicated faculty, state-of-the-art facilities, and innovative curriculum create an environment where curiosity thrives. Embracing diversity and fostering a sense of community, ABC School goes beyond academics, instilling values that last a lifetime. As we celebrate our journey, we look forward to the continued success of our students, guided by the principles that have defined ABC School since its inception.</p>
+  </section>
+
+  <section id="principal-interface" style="display: none;">
+    <h2>Principal's Message</h2>
+    <p>This section is only accessible for teachers. Please enter the email address below to access the content.</p>
+    <input type="text" id="principal-email" placeholder="Enter your email">
+    <button onclick="checkEmail()">Access Content</button>
+    <p id="principal-content" style="display: none;">Annual Day duties for teachers, to view the duties click the link below.
+    </p>
+    <a id="sheet-link" href="#" style="display: none;" onclick="showSheet()">Click here to view the Google Sheet</a>
+  </section>
+
+  <iframe id="principal-sheet" src="" style="display: none; width: 100%; height: 400px;"></iframe>
+</main>
+
+<footer>
+  &copy; 2023 Blog Web App. All rights reserved.
+</footer>
+
+<script>
+  function showInterface(interfaceId) {
+    // Hide all interfaces
+    document.querySelectorAll('main > section').forEach(function(interface) {
+      interface.style.display = 'none';
+    });
+
+    // Hide the Google Sheet iframe
+    document.getElementById('principal-sheet').style.display = 'none';
+
+    // Show the selected interface
+    document.getElementById(interfaceId + '-interface').style.display = 'block';
+  }
+
+  function checkEmail() {
+    const enteredEmail = document.getElementById('principal-email').value.toLowerCase();
+    const validEmail = 'muhammedanasmk123@gmail.com';
+
+    if (enteredEmail === validEmail) {
+      document.getElementById('principal-content').style.display = 'block';
+      document.getElementById('sheet-link').style.display = 'block';
+    } else {
+      alert('Access denied. Invalid email.');
+    }
+  }
+
+  function showSheet() {
+    const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTuy5MiRmCHEMJLs9J0CGw_wzPfc3H78_cZyWEooaQ2l1qkd9xhguBTxuh1R-0bPZI5aGSJ9UyBi45U/pubhtml?gid=0&single=true';
+    document.getElementById('principal-sheet').src = sheetUrl;
+    document.getElementById('principal-sheet').style.display = 'block';
+  }
+
+  // Automatic slideshow
+  let slideIndex = 0;
+
+  function showSlides() {
+    let i;
+    const slides = document.getElementById('sliding-images').getElementsByTagName('img');
+
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = 'none';
+    }
+
+    slideIndex++;
+
+    if (slideIndex > slides.length) {
+      slideIndex = 1;
+    }
+
+    slides[slideIndex - 1].style.display = 'block';
+    setTimeout(showSlides, 2000); // Change slide every 2 seconds
+  }
+
+  showSlides(); // Start the slideshow
+</script>
+
+</body>
+</html>
